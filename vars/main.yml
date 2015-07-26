@@ -1,0 +1,4 @@
+nginx:
+    php_engine: fpm
+    port: 80
+    workers: 4
