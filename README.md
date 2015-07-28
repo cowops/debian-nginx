@@ -11,11 +11,11 @@ This role requires a debian compliant system such as ubuntu.
 Role Variables
 --------------
 
-nginx:
-    document_root: /usr/share/nginx/html/
-    php_engine: fpm
-    port: 80
-    workers: 4
+- nginx:
+  -  document_root: /usr/share/nginx/html/
+  -  php_engine: fpm
+  -  port: 80
+  -  workers: 4
 
 Dependencies
 ------------
