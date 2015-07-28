@@ -12,6 +12,7 @@ Role Variables
 --------------
 
 nginx:
+    document_root: /usr/share/nginx/html/
     php_engine: fpm
     port: 80
     workers: 4
@@ -26,7 +27,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: loranger.debian-nginx, nginx.php_engine: fpm, nginx.port: 80, nginx.workers: 4 }
+         - { role: loranger.debian-nginx, nginx.document_root: /usr/share/nginx/html/, nginx.php_engine: fpm, nginx.port: 80, nginx.workers: 4 }
 
 Tasks
 -----

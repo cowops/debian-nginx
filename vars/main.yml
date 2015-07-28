@@ -1,4 +1,5 @@
 nginx:
+    document_root: /usr/share/nginx/html/
     php_engine: fpm
     port: 80
     workers: 4

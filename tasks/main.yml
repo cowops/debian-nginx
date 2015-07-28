@@ -13,8 +13,8 @@
   notify: reload nginx
 
 - name: create document root directory if needed
-  file: path=/usr/share/nginx/html/ state=directory mode=0755
+  file: path={{ nginx.document_root }} state=directory mode=0755
 
 - name: copy phpinfo
-  template: src=index.php.j2 dest=/usr/share/nginx/html/index.php
+  template: src=index.php.j2 dest={{ nginx.document_root }}index.php
   notify: reload nginx
