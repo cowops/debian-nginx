@@ -11,7 +11,10 @@
 - name: copy nginx default site
   template: src=default.{{ nginx.php_engine }}.j2 dest=/etc/nginx/sites-available/default
   notify: reload nginx
-  
+
+- name: create document root directory if needed
+  file: path=/usr/share/nginx/html/ state=directory mode=0755
+
 - name: copy phpinfo
   template: src=index.php.j2 dest=/usr/share/nginx/html/index.php
   notify: reload nginx
