@@ -1,4 +1,13 @@
 ---
+- name: register nginx repository key
+  apt_key: url=http://nginx.org/keys/nginx_signing.key state=present
+
+- name: add nginx default repositories
+  apt_repository: repo='deb http://nginx.org/packages/mainline/debian/ {{ debian.version }} nginx' state=present
+
+- name: add nginx default sources repositories
+  apt_repository: repo='deb-src http://nginx.org/packages/mainline/debian/ {{ debian.version }} nginx' state=present
+
 - name: install nginx packages
   apt: pkg={{ item }} state=latest update_cache=yes
   with_items:
