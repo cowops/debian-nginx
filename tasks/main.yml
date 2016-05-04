@@ -13,6 +13,9 @@
   with_items:
     - nginx
 
+- name: adjust user
+  lineinfile: "dest=/etc/nginx/nginx.conf state=present regexp='^user' line='user  {{ nginx.user }};'"
+
 - name: adjust workers
   lineinfile: "dest=/etc/nginx/nginx.conf state=present regexp='^worker_processes' line='worker_processes  {{ nginx.workers }};'"
 

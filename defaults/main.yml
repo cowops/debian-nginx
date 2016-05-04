@@ -1,5 +1,9 @@
 nginx:
+    user: www-data
     document_root: /usr/share/nginx/html/
     php_engine: fpm
     port: 80
     workers: 4
+
+php:
+    fastcgi_pass: "127.0.0.1:9000"
