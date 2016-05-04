@@ -19,6 +19,16 @@
 - name: adjust workers
   lineinfile: "dest=/etc/nginx/nginx.conf state=present regexp='^worker_processes' line='worker_processes  {{ nginx.workers }};'"
 
+- name: set nginx listen as unix scheme
+  set_fact:
+    nginx_listen: "unix:{{ php.fastcgi_pass }}"
+  when: php.fastcgi_pass.find('/') != -1
+
+- name: set nginx listen as ip scheme
+  set_fact:
+    nginx_listen: "{{ php.fastcgi_pass }}"
+  when: php.fastcgi_pass.find('/') > 0
+
 - name: copy nginx default site
   template: src=default.{{ nginx.php_engine }}.j2 dest=/etc/nginx/conf.d/default.conf
   notify: reload nginx
