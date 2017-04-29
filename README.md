@@ -27,7 +27,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: loranger.debian-nginx, nginx.document_root: /usr/share/nginx/html/, nginx.php_engine: fpm, nginx.port: 80, nginx.workers: 4 }
+         - { role: cowops.debian-nginx, nginx.document_root: /usr/share/nginx/html/, nginx.php_engine: fpm, nginx.port: 80, nginx.workers: 4 }
 
 Tasks
 -----
