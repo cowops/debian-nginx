@@ -9,9 +9,13 @@
   apt_repository: repo='deb-src http://nginx.org/packages/mainline/debian/ {{ debian.version }} nginx' state=present
 
 - name: install nginx packages
-  apt: pkg={{ item }} state=latest update_cache=yes
-  with_items:
-    - nginx
+  apt:
+    name: {{ packages }}
+    state: latest
+    update_cache: yes
+  vars:
+    packages:
+      - nginx
 
 - name: adjust user
   lineinfile: "dest=/etc/nginx/nginx.conf state=present regexp='^user' line='user  {{ nginx.user }};'"
