@@ -10,7 +10,7 @@
 
 - name: install nginx packages
   apt:
-    name: {{ packages }}
+    name: "{{ packages }}"
     state: latest
     update_cache: yes
   vars:
